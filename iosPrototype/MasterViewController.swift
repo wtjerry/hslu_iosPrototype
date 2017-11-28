@@ -18,9 +18,23 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.addDummyDataToStorage()
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         self.tableView.reloadData()
         super.viewWillAppear(animated)
+    }
+    
+    func addDummyDataToStorage() {
+        let context = self.fetchedResultsController.managedObjectContext
+        let newFeedback = Feedback(context: context)
+        newFeedback.text = "TestFeedback"
+        
+        do {
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
 
     // MARK: - Segues
