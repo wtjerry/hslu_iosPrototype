@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "Detail view content goes here"; ObjectID = "0XM-y9-sOw"; */
+"0XM-y9-sOw.text" = "Detail view content goes here";
+
+/* Class = "UILabel"; text = "fillVoteCount in here"; ObjectID = "3wb-IO-UUb"; */
+"3wb-IO-UUb.text" = "fillVoteCount in here";
+
+/* Class = "UITableViewController"; title = "Master"; ObjectID = "7bK-jq-Zjz"; */
+"7bK-jq-Zjz.title" = "Mastr";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "AeV-RR-uIg"; */
+"AeV-RR-uIg.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Creation Date"; ObjectID = "Arb-8d-yTl"; */
+"Arb-8d-yTl.text" = "Ersteuigs datom";
+
+/* Class = "UILabel"; text = " "; ObjectID = "Arm-wq-HPj"; */
+"Arm-wq-HPj.text" = " ";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "Fwc-A2-ueF"; */
+"Fwc-A2-ueF.text" = "Beschribig";
+
+/* Class = "UIViewController"; title = "Detail"; ObjectID = "JEX-9P-axG"; */
+"JEX-9P-axG.title" = "Nööcheri Infromatione";
+
+/* Class = "UINavigationController"; title = "Master"; ObjectID = "RMx-3f-FxP"; */
+"RMx-3f-FxP.title" = "Mastr";
+
+/* Class = "UINavigationItem"; title = "Wayne"; ObjectID = "Zdf-7t-Un8"; */
+"Zdf-7t-Un8.title" = "Das wöstisch wohl gäre";
+
+/* Class = "UILabel"; text = "Vote Counter"; ObjectID = "ZjD-yk-35w"; */
+"ZjD-yk-35w.text" = "Wäge stiil oder soo";
+
+/* Class = "UINavigationItem"; title = "Detail"; ObjectID = "mOI-FS-AaM"; */
+"mOI-FS-AaM.title" = "Nööcheri Infos";
+
+/* Class = "UILabel"; text = "fillCreationDate in here"; ObjectID = "wx1-Xz-vmA"; */
+"wx1-Xz-vmA.text" = "fillCreationDate in here";

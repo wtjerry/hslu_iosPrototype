@@ -9,8 +9,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Master View"
-        
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -28,6 +26,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let context = self.fetchedResultsController.managedObjectContext
         let newFeedback = Feedback(context: context)
         newFeedback.text = "TestFeedback"
+        newFeedback.creationDate = Date()
+        newFeedback.voteCounter = 42
+        
         
         do {
             try context.save()
