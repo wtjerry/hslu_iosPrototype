@@ -7,7 +7,7 @@ class DetailViewController: UIViewController {
     func configureView() {
         if let detail = detailItem {
             if let label = detailDescriptionLabel {
-                label.text = detail.timestamp!.description
+                label.text = detail.text
             }
         }
     }
@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-    var detailItem: Event? {
+    var detailItem: Feedback? {
         didSet {
             configureView()
         }
