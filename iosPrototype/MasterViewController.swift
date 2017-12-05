@@ -64,15 +64,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SpecializedTableViewCell
         let feedback = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withFeedback: feedback)
+        cell.descriptionContent.text = feedback.text
+        cell.CountValue.text = String(feedback.voteCounter)
         return cell
-    }
-
-    func configureCell(_ cell: UITableViewCell, withFeedback feedback: Feedback) {
-        cell.textLabel!.text = feedback.text
     }
 
     // MARK: - Fetched results controller
