@@ -13,10 +13,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        //self.retrieveData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.addDummyDataToStorage()
+        //self.addDummyDataToStorage
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         self.tableView.reloadData()
         super.viewWillAppear(animated)
@@ -37,7 +39,33 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
+    
+    func retrieveData() {
+        let urlString = "https://wherever.ch/hslu/iPhoneAdressData.json"
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with:url!) { (data, response, error) in
+            if error == nil {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [Dictionary<String, AnyObject>]
+                    //let json = try JSONSerialization.jsonObject(with: data!, options: SONSerialization.ReadingOptions.mutableContainers) as! Array<AnyObject>
 
+                    let context = self.fetchedResultsController.managedObjectContext
+
+                    for element in json {
+                        let newFeedback = Feedback(context: context)
+                        newFeedback.text = element["lastName"] as! String
+                        newFeedback.voteCounter = element["plz"] as! Int32
+                    }
+                    try context.save()
+
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+
+        }.resume()
+    }
+    
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
