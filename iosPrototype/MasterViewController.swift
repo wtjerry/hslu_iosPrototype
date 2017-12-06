@@ -6,6 +6,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
 
+    var feedbacks: [Feedback] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -14,12 +16,32 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        //self.retrieveData()
+        self.retrieveData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         //self.addDummyDataToStorage
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        
+        
+        
+        let fetchRequest: NSFetchRequest<Feedback> = Feedback.fetchRequest()
+        
+        fetchRequest.fetchBatchSize = 20
+        
+        // Edit the sort key as appropriate.
+        let sortDescriptor = NSSortDescriptor(key: "text", ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            let results = try self.fetchedResultsController.managedObjectContext.fetch(fetchRequest)
+            self.feedbacks = results
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
         self.tableView.reloadData()
         super.viewWillAppear(animated)
     }
@@ -71,7 +93,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-            let object = fetchedResultsController.object(at: indexPath)
+            let object = self.feedbacks[indexPath.item]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -83,17 +105,17 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        //let sectionInfo = fetchedResultsController.sections![section]
+        return self.feedbacks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SpecializedTableViewCell
-        let feedback = fetchedResultsController.object(at: indexPath)
+        let feedback = self.feedbacks[indexPath.item]
         cell.descriptionContent.text = feedback.text
         cell.CountValue.text = String(feedback.voteCounter)
         return cell
