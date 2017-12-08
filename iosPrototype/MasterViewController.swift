@@ -16,70 +16,49 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        self.retrieveData()
+        self.fetchJSONToDatabase()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        //self.addDummyDataToStorage
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         
+        self.fetchFeedbacksFromDatabase()
+        self.tableView.reloadData()
         
-        
+        super.viewWillAppear(animated)
+    }
+    
+    func fetchFeedbacksFromDatabase() {
         let fetchRequest: NSFetchRequest<Feedback> = Feedback.fetchRequest()
-        
         fetchRequest.fetchBatchSize = 20
-        
-        // Edit the sort key as appropriate.
         let sortDescriptor = NSSortDescriptor(key: "text", ascending: false)
-        
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         do {
-            let results = try self.fetchedResultsController.managedObjectContext.fetch(fetchRequest)
+            let results = try self.managedObjectContext!.fetch(fetchRequest)
             self.feedbacks = results
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        
-        self.tableView.reloadData()
-        super.viewWillAppear(animated)
     }
     
-    func addDummyDataToStorage() {
-        let context = self.fetchedResultsController.managedObjectContext
-        let newFeedback = Feedback(context: context)
-        newFeedback.text = "TestFeedback"
-        newFeedback.creationDate = Date()
-        newFeedback.voteCounter = 42
-        
-        
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-    }
-    
-    func retrieveData() {
+    func fetchJSONToDatabase() {
         let urlString = "https://wherever.ch/hslu/iPhoneAdressData.json"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with:url!) { (data, response, error) in
             if error == nil {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [Dictionary<String, AnyObject>]
-                    //let json = try JSONSerialization.jsonObject(with: data!, options: SONSerialization.ReadingOptions.mutableContainers) as! Array<AnyObject>
-
-                    let context = self.fetchedResultsController.managedObjectContext
-
+                    
+                    let context = self.managedObjectContext!
+                    
                     for element in json {
                         let newFeedback = Feedback(context: context)
                         newFeedback.text = element["lastName"] as! String
                         newFeedback.voteCounter = element["plz"] as! Int32
                     }
                     try context.save()
-
                 } catch let error as NSError {
                     print(error)
                 }
@@ -109,7 +88,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //let sectionInfo = fetchedResultsController.sections![section]
         return self.feedbacks.count
     }
 
@@ -122,7 +100,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     // MARK: - Fetched results controller
-
+    /*
     var fetchedResultsController: NSFetchedResultsController<Feedback> {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
@@ -155,7 +133,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         return _fetchedResultsController!
     }    
     var _fetchedResultsController: NSFetchedResultsController<Feedback>? = nil
-
+*/
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
