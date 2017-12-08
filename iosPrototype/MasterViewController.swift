@@ -51,12 +51,16 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [Dictionary<String, AnyObject>]
                     
-                    let context = self.managedObjectContext!
+                    self.fetchFeedbacksFromDatabase()
                     
+                    let context = self.managedObjectContext!
                     for element in json {
-                        let newFeedback = Feedback(context: context)
-                        newFeedback.text = element["lastName"] as! String
-                        newFeedback.voteCounter = element["plz"] as! Int32
+                        let name = element["lastName"] as! String
+                        if !self.feedbacks.contains(where: {$0.text == name}) {
+                            let newFeedback = Feedback(context: context)
+                            newFeedback.text = name
+                            newFeedback.voteCounter = element["plz"] as! Int32
+                        }
                     }
                     try context.save()
                     
