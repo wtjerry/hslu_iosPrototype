@@ -16,7 +16,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        self.fetchJSONToDatabase()
+        self.fetchJSONToDatabaseAndUpdateUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +43,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
     
-    func fetchJSONToDatabase() {
+    func fetchJSONToDatabaseAndUpdateUI() {
         let urlString = "https://wherever.ch/hslu/iPhoneAdressData.json"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with:url!) { (data, response, error) in
@@ -59,6 +59,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                         newFeedback.voteCounter = element["plz"] as! Int32
                     }
                     try context.save()
+                    
+                    self.fetchFeedbacksFromDatabase()
+                    DispatchQueue.main.sync {
+                        self.tableView.reloadData()
+                    }
                 } catch let error as NSError {
                     print(error)
                 }
