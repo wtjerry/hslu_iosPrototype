@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		352FD7201FD7458200A20DB1 /* SpecializedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352FD71E1FD7458200A20DB1 /* SpecializedTableViewCell.swift */; };
+		35D47EB11FE016AC002CAA59 /* CreateNewEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D47EB01FE016AC002CAA59 /* CreateNewEntryController.swift */; };
 		C48A30C11FC568E2008059ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A30C01FC568E2008059ED /* AppDelegate.swift */; };
 		C48A30C41FC568E2008059ED /* iosPrototype.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C48A30C21FC568E2008059ED /* iosPrototype.xcdatamodeld */; };
 		C48A30C61FC568E2008059ED /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A30C51FC568E2008059ED /* MasterViewController.swift */; };
@@ -39,7 +40,8 @@
 /* Begin PBXFileReference section */
 		352FD71E1FD7458200A20DB1 /* SpecializedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecializedTableViewCell.swift; sourceTree = "<group>"; };
 		3574C2E01FCDD973005F2CE4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		3574C2E11FCDE8DE005F2CE4 /* gsw-CH */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "gsw-CH"; path = "gsw-CH.lproj/Main.strings"; sourceTree = "<group>"; };
+		35D47EAF1FD7F673002CAA59 /* de-CH */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "de-CH"; path = "de-CH.lproj/Main.strings"; sourceTree = "<group>"; };
+		35D47EB01FE016AC002CAA59 /* CreateNewEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewEntryController.swift; sourceTree = "<group>"; };
 		C48A30BD1FC568E2008059ED /* iosPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48A30C01FC568E2008059ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C48A30C31FC568E2008059ED /* iosPrototype.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iosPrototype.xcdatamodel; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				C48A30C01FC568E2008059ED /* AppDelegate.swift */,
 				C48A30C51FC568E2008059ED /* MasterViewController.swift */,
+				35D47EB01FE016AC002CAA59 /* CreateNewEntryController.swift */,
 				C48A30C71FC568E2008059ED /* DetailViewController.swift */,
 				C48A30C91FC568E2008059ED /* Main.storyboard */,
 				352FD71E1FD7458200A20DB1 /* SpecializedTableViewCell.swift */,
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				352FD7201FD7458200A20DB1 /* SpecializedTableViewCell.swift in Sources */,
+				35D47EB11FE016AC002CAA59 /* CreateNewEntryController.swift in Sources */,
 				C48A30C41FC568E2008059ED /* iosPrototype.xcdatamodeld in Sources */,
 				C48A30C11FC568E2008059ED /* AppDelegate.swift in Sources */,
 				C48A30C61FC568E2008059ED /* MasterViewController.swift in Sources */,
@@ -318,7 +322,7 @@
 			children = (
 				C48A30CA1FC568E2008059ED /* Base */,
 				3574C2E01FCDD973005F2CE4 /* de */,
-				3574C2E11FCDE8DE005F2CE4 /* gsw-CH */,
+				35D47EAF1FD7F673002CAA59 /* de-CH */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -448,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMTELCB5ER;
 				INFOPLIST_FILE = iosPrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hslu.mobile.ios.iosPrototype;
@@ -462,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMTELCB5ER;
 				INFOPLIST_FILE = iosPrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hslu.mobile.ios.iosPrototype;

@@ -5,6 +5,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    public let CreateIdentifier : String = "createIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,8 +16,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
+    @IBAction func backWithoutSaving(segue: UIStoryboardSegue) {
+    }
+    @IBAction func backButSave(segue: UIStoryboardSegue) {
+        if let desc : Any = segue.value(forKeyPath: "description"){
+            debugPrint(desc)
+        }else {
+            debugPrint("false")
+        }
+        debugPrint("test")
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
-        self.addDummyDataToStorage()
+        //self.addDummyDataToStorage()
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         self.tableView.reloadData()
         super.viewWillAppear(animated)
