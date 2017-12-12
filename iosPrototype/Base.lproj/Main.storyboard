@@ -140,9 +140,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="kVl-5S-OXh">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="7bK-jq-Zjz" id="TXU-6a-H6f"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="130" id="WCw-Qf-5nD" customClass="SpecializedTableViewCell" customModule="iosPrototype" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
@@ -157,10 +171,16 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-g5-nNe">
                                             <rect key="frame" x="334" y="10" width="30" height="26"/>
                                             <state key="normal" title="+"/>
+                                            <connections>
+                                                <action selector="increaseDecreaseFeedbackCounter:" destination="7bK-jq-Zjz" eventType="touchUpInside" id="sg1-rL-emn"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijk-zx-Yhf">
                                             <rect key="frame" x="334" y="94" width="30" height="25.5"/>
                                             <state key="normal" title="-"/>
+                                            <connections>
+                                                <action selector="increaseDecreaseFeedbackCounter:" destination="7bK-jq-Zjz" eventType="touchUpInside" id="kXI-8p-gWV"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4To-fJ-JV3">
                                             <rect key="frame" x="26" y="21" width="283" height="88"/>
@@ -190,6 +210,7 @@ asfdf</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="CountValue" destination="Nsr-VS-2ac" id="V9e-PW-kAd"/>
                                     <outlet property="descriptionContent" destination="4To-fJ-JV3" id="WGg-Pd-qz7"/>
@@ -213,8 +234,20 @@ asfdf</string>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Wayne" id="Zdf-7t-Un8"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBarOutlet" destination="r7i-6Z-zg0" id="oc8-9P-zWv"/>
+                        <outlet property="searchDisplayController" destination="ZW6-Lf-myZ" id="VmD-AE-3Eo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="ZW6-Lf-myZ">
+                    <connections>
+                        <outlet property="delegate" destination="7bK-jq-Zjz" id="WpN-Op-M4Z"/>
+                        <outlet property="searchContentsController" destination="7bK-jq-Zjz" id="txA-9k-dWl"/>
+                        <outlet property="searchResultsDataSource" destination="7bK-jq-Zjz" id="Jgp-VZ-EfK"/>
+                        <outlet property="searchResultsDelegate" destination="7bK-jq-Zjz" id="Ccb-dK-vyD"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="842" y="-630"/>
         </scene>
@@ -271,13 +304,12 @@ asfdf</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="&lt;Description&gt;" translatesAutoresizingMaskIntoConstraints="NO" id="6sZ-Zy-nnV">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sZ-Zy-nnV">
                                 <rect key="frame" x="20" y="244" width="335" height="191"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fillCreationDate in here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXr-za-x3J">

@@ -1,0 +1,81 @@
+
+/* Class = "UILabel"; text = "fillVoteCount in here"; ObjectID = "3wb-IO-UUb"; */
+"3wb-IO-UUb.text" = "fillVoteCount in here";
+
+/* Class = "UILabel"; text = "dsaff\nasfdf"; ObjectID = "4To-fJ-JV3"; */
+"4To-fJ-JV3.text" = "dsaff\nasfdf";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "5Qi-Wh-8ta"; */
+"5Qi-Wh-8ta.text" = "0";
+
+/* Class = "UITextView"; text = "<Description>"; ObjectID = "6sZ-Zy-nnV"; */
+"6sZ-Zy-nnV.text" = "<Description>";
+
+/* Class = "UILabel"; text = "Creation Date"; ObjectID = "7Sl-7H-moI"; */
+"7Sl-7H-moI.text" = "Creation Date";
+
+/* Class = "UITableViewController"; title = "Master"; ObjectID = "7bK-jq-Zjz"; */
+"7bK-jq-Zjz.title" = "Master";
+
+/* Class = "UILabel"; text = "Creation Date"; ObjectID = "Arb-8d-yTl"; */
+"Arb-8d-yTl.text" = "Creation Date";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "Fwb-g5-nNe"; */
+"Fwb-g5-nNe.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "Fwc-A2-ueF"; */
+"Fwc-A2-ueF.text" = "Description";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "Ijk-zx-Yhf"; */
+"Ijk-zx-Yhf.normalTitle" = "-";
+
+/* Class = "UIViewController"; title = "Detail"; ObjectID = "JEX-9P-axG"; */
+"JEX-9P-axG.title" = "Detail";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Nsr-VS-2ac"; */
+"Nsr-VS-2ac.text" = "0";
+
+/* Class = "UINavigationController"; title = "Master"; ObjectID = "RMx-3f-FxP"; */
+"RMx-3f-FxP.title" = "Master";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "U5V-6l-aCh"; */
+"U5V-6l-aCh.title" = "Save";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "Xto-UI-nb7"; */
+"Xto-UI-nb7.text" = "Description";
+
+/* Class = "UINavigationItem"; title = "Wayne"; ObjectID = "Zdf-7t-Un8"; */
+"Zdf-7t-Un8.title" = "Wayne";
+
+/* Class = "UILabel"; text = "Vote Counter"; ObjectID = "ZjD-yk-35w"; */
+"ZjD-yk-35w.text" = "Vote Counter";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "cMf-Cf-pXI"; */
+"cMf-Cf-pXI.title" = "Cancel";
+
+/* Class = "UITextView"; text = "TEST safasdfasd"; ObjectID = "cek-R3-JXD"; */
+"cek-R3-JXD.text" = "TEST safasdfasd";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "iWz-zi-AV3"; */
+"iWz-zi-AV3.title" = "Add";
+
+/* Class = "UISearchBar"; placeholder = "Search"; ObjectID = "kVl-5S-OXh"; */
+"kVl-5S-OXh.placeholder" = "Search";
+
+/* Class = "UISearchBar"; kVl-5S-OXh.scopeButtonTitles[0] = "Title"; ObjectID = "kVl-5S-OXh"; */
+"kVl-5S-OXh.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; kVl-5S-OXh.scopeButtonTitles[1] = "Title"; ObjectID = "kVl-5S-OXh"; */
+"kVl-5S-OXh.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UINavigationItem"; title = "Detail"; ObjectID = "mOI-FS-AaM"; */
+"mOI-FS-AaM.title" = "Detail";
+
+/* Class = "UILabel"; text = "Vote Counter"; ObjectID = "tIk-wf-cNI"; */
+"tIk-wf-cNI.text" = "Vote Counter";
+
+/* Class = "UILabel"; text = "fillCreationDate in here"; ObjectID = "vXr-za-x3J"; */
+"vXr-za-x3J.text" = "fillCreationDate in here";
+
+/* Class = "UILabel"; text = "fillCreationDate in here"; ObjectID = "wx1-Xz-vmA"; */
+"wx1-Xz-vmA.text" = "fillCreationDate in here";

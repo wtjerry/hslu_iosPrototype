@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
@@ -19,6 +19,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         self.fetchJSONToDatabaseAndUpdateUI()
     }
+    @IBOutlet var searchBarOutlet: UITableView!
     @IBAction func backWithoutSaving(segue: UIStoryboardSegue) {
     }
     @IBAction func backButSave(segue: UIStoryboardSegue) {
@@ -132,4 +133,42 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Put filtercode in here
+        searchBar.resignFirstResponder()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // Put prefiltercode in here
+    }
+    @IBAction func clickedOutsideSearchbar(_ sender: Any) {
+        debugPrint("TESATASDF")
+        self.searchBarOutlet.resignFirstResponder()
+    }
+    @IBAction func increaseDecreaseFeedbackCounter(_ sender: UIButton) {
+        if let cell = sender.superview?.superview as? SpecializedTableViewCell {
+            let indexPath = self.tableView.indexPath(for: cell)
+            if let index = indexPath?.last as? Int {
+                if(sender.currentTitle == "+") {
+                    feedbacks[index].voteCounter += 1
+                } else {
+                    feedbacks[index].voteCounter -= 1
+                }
+                //Put saving code in here
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
 }
