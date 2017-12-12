@@ -19,17 +19,22 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         self.fetchJSONToDatabaseAndUpdateUI()
     }
-
     @IBAction func backWithoutSaving(segue: UIStoryboardSegue) {
     }
     @IBAction func backButSave(segue: UIStoryboardSegue) {
-        if let desc : Any = segue.value(forKeyPath: "description"){
-            debugPrint(desc)
-        }else {
-            debugPrint("false")
+        if let descController = segue.source as? CreateNewEntryController {
+            let context = self.managedObjectContext!
+            let feedback = Feedback(context: context)
+            feedback.text = descController.DescriptionInput.text as String?
+            feedback.creationDate = Date.init()
+            feedback.voteCounter = 0
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error)
+            }
+            self.fetchFeedbacksFromDatabase()
         }
-        debugPrint("test")
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed

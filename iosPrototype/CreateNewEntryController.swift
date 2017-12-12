@@ -14,6 +14,7 @@ class CreateNewEntryController: UIViewController {
     @IBAction func backWithoutSaving(segue: UIStoryboardSegue) {
     }
     
+    var myDescription : String? = nil
     
     @IBAction func saveClicked(_ sender: Any) {
         self.setValue(DescriptionInput.text, forKey: "description")
