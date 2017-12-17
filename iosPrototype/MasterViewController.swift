@@ -62,7 +62,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func fetchJSONToDatabaseAndUpdateUI() {
-        let urlString = "https://wherever.ch/hslu/iPhoneAdressData.json"
+        let urlString = "https://fischli.pythonanywhere.com"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with:url!) { (data, response, error) in
             if error == nil {
@@ -73,11 +73,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                     
                     let context = self.managedObjectContext!
                     for element in json {
-                        let name = element["lastName"] as! String
-                        if !self.feedbacks.contains(where: {$0.text == name}) {
+                        let text = element["text"] as! String
+                        if !self.feedbacks.contains(where: {$0.text == text}) {
                             let newFeedback = Feedback(context: context)
-                            newFeedback.text = name
-                            newFeedback.voteCounter = element["plz"] as! Int32
+                            newFeedback.text = text
+                            newFeedback.voteCounter = element["votes"] as! Int32
                         }
                     }
                     try context.save()
