@@ -10,7 +10,7 @@ class DetailViewController: UIViewController {
         if let detail = detailItem {
             if let label = detailDescription {
                 label.text = detail.text
-                creationDateLabel.text = (String(describing: detail.creationDate))
+                creationDateLabel.text = (String(describing: detail.creationDate!))
                 voteCount.text = (String(detail.voteCounter))
             }
         }
