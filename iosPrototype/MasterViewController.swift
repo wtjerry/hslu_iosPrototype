@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
+class MasterViewController: UITableViewController, UISearchBarDelegate {
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
@@ -124,14 +124,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         cell.descriptionContent.text = feedback.text
         cell.CountValue.text = String(feedback.voteCounter)
         return cell
-    }
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
